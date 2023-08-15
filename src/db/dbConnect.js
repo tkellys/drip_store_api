@@ -1,4 +1,4 @@
-// Conexões com o banco 
+// Conexões com o banco Mongo nessa pasta
 
 import mongoose from "mongoose";
 import 'dotenv/config'

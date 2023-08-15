@@ -8,9 +8,7 @@ const PORT = 5000
 const HOST = "localhost"
 
 
-app.get('/', (req, res) => {
-  res.send('Hello World! Servidor ta ON ')
-})
+
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port http://${HOST}:${PORT}`)
