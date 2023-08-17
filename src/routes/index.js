@@ -1,8 +1,10 @@
 // aqui eu vou colocar minhas rotas para serem chamadas pelo arquivo 
 // app que é onde fica centralizado todos os caminhos.
 
+import routerGeneros from "./Generosroute.js";
 import routerProdutos from "./Produtosroute.js";
 import express from "express";
+
 
 
 const routes = (app) => {
@@ -11,7 +13,8 @@ const routes = (app) => {
     })
 
     app.use(express.json(),
-        routerProdutos
+        routerProdutos,
+        routerGeneros
     );
 };
 export default routes;

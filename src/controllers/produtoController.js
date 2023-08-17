@@ -1,6 +1,7 @@
-// aqui ficam as REGRAS de negocio -> if / elses
+// aqui ficam as REGRAS de negocio -> if / elses e metodos funçoes
 import moment from "moment/moment.js";
 import  {Produto}  from "../models/produto.js"
+import express from "express";
 
 class ProdutoController {
     static criar = async(req, res) => {
