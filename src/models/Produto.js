@@ -4,7 +4,12 @@ import mongoose from "mongoose";
 
 export const Produto = mongoose.model('Produto', {
     nome: String,
-    genero: String,
+    genero: {
+        type: mongoose.Schema.Types.ObjectId,
+        //ref é o model Genero, que ele faz parte de produto e aqui tem a relação. 
+        ref: 'Genero',
+        required: true
+    },
     tipo: String,
     preco: Number,
    desconto: Number

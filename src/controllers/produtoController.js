@@ -9,10 +9,10 @@ class ProdutoController {
         const { nome, genero, tipo, preco, desconto } = req.body;
         const produto = { nome, genero, tipo, preco, desconto }
 
-        const produtoNovo = await Produto.create(produto);
+        const produtoNovo = (await Produto.create(produto)).populate('genero');
         res.status(201).json({
             data:produtoNovo,
-            msg:"Produto novo foi Criado."
+            msg:"Produto novo foi Criado." 
         });
     
 
@@ -29,7 +29,7 @@ class ProdutoController {
 
     static buscarTodos = async(req, res) => {
         // find() metodo que busca todos
-        const produtos = await Produto.find()
+        const produtos = await Produto.find().populate('genero')
       
         res.status(200).json(produtos);
      
