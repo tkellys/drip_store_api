@@ -3,6 +3,9 @@
 import express from 'express'
 import './src/db/dbConnect.js'
 import app from './src/app.js'
+import cors from 'cors'
+
+
 
 const PORT = 5000
 const HOST = "localhost"
