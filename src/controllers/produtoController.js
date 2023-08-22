@@ -1,7 +1,7 @@
 // aqui ficam as REGRAS de negocio -> if / elses e metodos funçoes
 import moment from "moment/moment.js";
-import  {Produto}  from "../models/produto.js"
-import express from "express";
+import  {Produto}  from "../models/Produto.js"
+
 
 class ProdutoController {
     static criar = async(req, res) => {
@@ -9,7 +9,8 @@ class ProdutoController {
         const { nome, genero, tipo, preco, desconto } = req.body;
         const produto = { nome, genero, tipo, preco, desconto }
 
-        const produtoNovo = (await Produto.create(produto)).populate('genero');
+        //populate é para produto herdar os objetos de genero
+        const produtoNovo = (await Produto.create(produto)).populate('genero')
         res.status(201).json({
             data:produtoNovo,
             msg:"Produto novo foi Criado." 

@@ -1,7 +1,16 @@
 import mongoose from "mongoose";
 
-export const Genero = mongoose.model('Genero', {
-   nome: String,
-   codigo: Number,
-}, )
+const generoSchema = new mongoose.Schema(
+    {
+   nome: {type: String, required: true },
+   codigo: {
+      type: Number,
+      unique: true,
+      required: true
+   }
+}
+)
 
+const Genero = mongoose.model('genero', generoSchema)
+
+export{Genero, generoSchema}

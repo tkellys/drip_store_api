@@ -7,7 +7,7 @@ export const Produto = mongoose.model('Produto', {
     genero: {
         type: mongoose.Schema.Types.ObjectId,
         //ref é o model Genero, que ele faz parte de produto e aqui tem a relação. 
-        ref: 'Genero',
+        ref: 'genero',
         required: true
     },
     tipo: String,
