@@ -12,5 +12,6 @@ export const Produto = mongoose.model('Produto', {
     },
     tipo: String,
     preco: Number,
-   desconto: Number
+   desconto: Number,
+   precoComDesconto: Number
 }, )

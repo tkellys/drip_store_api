@@ -5,6 +5,7 @@ const routerProdutos = express.Router();
 
 routerProdutos
     .get('/produtos', ProdutoController.buscarTodos)
+    .get('/produtos-em-alta', ProdutoController.buscarTodosEmAlta)
     .get('/produto/:id', ProdutoController.buscarPorId)
     .post('/produto', ProdutoController.criar)
     .put('/produto/:id', ProdutoController.atualizar)

@@ -6,8 +6,8 @@ import  {Produto}  from "../models/Produto.js"
 class ProdutoController {
     static criar = async(req, res) => {
         // transformar o body em obj produto para ser salvo no banco
-        const { nome, genero, tipo, preco, desconto } = req.body;
-        const produto = { nome, genero, tipo, preco, desconto }
+        const { nome, genero, tipo, preco, desconto, precoComDesconto } = req.body;
+        const produto = { nome, genero, tipo, preco, desconto, precoComDesconto }
 
         //populate é para produto herdar os objetos de genero
         const produtoNovo = (await Produto.create(produto)).populate('genero')
@@ -33,6 +33,19 @@ class ProdutoController {
         const produtos = await Produto.find().populate('genero')
       
         res.status(200).json(produtos);
+     
+        if (produtos.length == 0){
+            res.status(404).json({message:'Não ha produtos'})
+            
+            return
+        }
+    }
+
+    static buscarTodosEmAlta = async(req, res) => {
+        // find() metodo que busca todos
+        const produtos = await Produto.find().populate('genero')
+        const resutado = produtos.filter(prod=> prod.desconto > 0 );
+        res.status(200).json(resutado);
      
         if (produtos.length == 0){
             res.status(404).json({message:'Não ha produtos'})
@@ -70,8 +83,8 @@ class ProdutoController {
     */
     static atualizar = async(req, res) => {
         const id = req.params.id
-        const { nome, genero, tipo, preco, desconto } = req.body;
-        const produto = { nome, genero, tipo, preco, desconto }
+        const { nome, genero, tipo, preco, desconto, precoComDesconto } = req.body;
+        const produto = { nome, genero, tipo, preco, desconto, precoComDesconto }
 
         const produtoAtualizado = await Produto.updateOne({ _id: id }, produto);
         console.log('updateProduto', produtoAtualizado);
