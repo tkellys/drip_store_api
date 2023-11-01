@@ -5,10 +5,11 @@ import cors from 'cors';
 const app = express()
 app.use(cors())
 
-export default app.use(
+export default app.use(express.json())
+/*export default app.use(
     express.urlencoded({
         extended: true
     })
-);
+);*/
 routes(app);
 
